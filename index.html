@@ -3,39 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Полтава — Місто Перемог та Натхнення</title>
+    <title>Полтава — Місто для Життя</title>
     <style>
-        :root { --main: #2c3e50; --accent: #3498db; --gold: #f1c40f; --bg: #f4f7f6; }
-        body { font-family: 'Segoe UI', Roboto, sans-serif; margin: 0; background: var(--bg); color: #333; line-height: 1.6; }
+        :root { --main: #2c3e50; --accent: #3498db; --gold: #f1c40f; --bg: #fdfdfd; }
         
+        /* Базовые стили */
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background: var(--bg); color: #333; line-height: 1.6; }
+        
+        /* Кнопки языков */
         .lang-nav { position: fixed; top: 20px; right: 20px; z-index: 1000; }
-        .lang-nav button { background: rgba(0,0,0,0.6); border: 1px solid #fff; color: #fff; padding: 8px 15px; cursor: pointer; border-radius: 8px; font-weight: bold; }
+        .lang-nav button { background: rgba(0,0,0,0.7); border: 1px solid #fff; color: #fff; padding: 10px 18px; cursor: pointer; border-radius: 30px; font-weight: bold; transition: 0.3s; }
         .lang-nav button.active { background: var(--gold); color: #000; border-color: var(--gold); }
 
+        /* Шапка (ПК по умолчанию) */
         header { 
             background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url(poltava-center.jpg); 
             background-size: cover; background-position: center; background-attachment: fixed; height: 60vh; 
             display: flex; flex-direction: column; justify-content: center; align-items: center; color: #fff; text-align: center;
         }
 
-        .main-container { max-width: 1200px; margin: -50px auto 50px; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; padding: 0 20px; }
-        .card { background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); margin-bottom: 30px; }
+        /* Контейнер (ПК: 2 колонки) */
+        .main-container { 
+            max-width: 1200px; 
+            margin: -60px auto 60px; 
+            display: grid; 
+            grid-template-columns: 2fr 1fr; 
+            gap: 30px; 
+            padding: 0 20px; 
+        }
+
+        .card { background: #fff; padding: 35px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        h2 { color: var(--main); border-left: 6px solid var(--gold); padding-left: 20px; font-size: 2rem; margin-top: 0; }
         
-        h2 { color: var(--main); border-left: 5px solid var(--gold); padding-left: 15px; margin-top: 0; }
-        p { margin-bottom: 15px; text-align: justify; }
+        .spot { background: #fffcf0; padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 1px solid #f9ebae; }
+        .spot strong { color: #e67e22; font-size: 1.3rem; display: block; margin-bottom: 8px; }
 
-        /* Стили для молодежных мест */
-        .spot { background: #fdf9e7; padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 3px solid var(--gold); }
-        .spot strong { color: #d35400; display: block; margin-bottom: 5px; }
-
-        .vibe-box { background: var(--main); color: #fff; padding: 25px; border-radius: 15px; }
-        .tv-btn { background: #e74c3c; color: #fff; text-decoration: none; padding: 15px; border-radius: 10px; display: block; text-align: center; font-weight: bold; margin-top: 20px; }
-
+        .tv-card { background: linear-gradient(135deg, #e74c3c, #c0392b); color: #fff !important; padding: 30px; border-radius: 20px; text-align: center; text-decoration: none; display: block; }
+        
+        /* Логика языков */
         [lang="en"] { display: none; }
         .en-mode [lang="uk"] { display: none; }
         .en-mode [lang="en"] { display: block; }
 
-        @media (max-width: 900px) { .main-container { grid-template-columns: 1fr; } }
+        /* --- АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНА --- */
+        @media (max-width: 900px) {
+            header { height: 45vh; }
+            header h1 { font-size: 2.5rem !important; }
+            header p { font-size: 1.1rem !important; padding: 0 15px; }
+
+            .main-container { 
+                grid-template-columns: 1fr; /* Переключаем в одну колонку */
+                margin-top: -30px; 
+                padding: 0 15px; 
+            }
+
+            .card { padding: 20px; }
+            h2 { font-size: 1.5rem; }
+            
+            .lang-nav { top: 10px; right: 10px; }
+            .lang-nav button { padding: 8px 14px; font-size: 13px; }
+            
+            iframe { height: 250px; } /* Карта чуть меньше на мобилке */
+        }
     </style>
 </head>
 <body>
@@ -46,51 +75,34 @@
 </div>
 
 <header>
-    <h1 style="font-size: 4rem; margin: 0; text-shadow: 3px 3px 10px rgba(0,0,0,0.5);">ПОЛТАВА</h1>
-    <p style="font-size: 1.5rem;" lang="uk">Духовна столиця, що крокує в майбутнє</p>
-    <p style="font-size: 1.5rem;" lang="en">The spiritual capital stepping into the future</p>
+    <h1 style="font-size: 4.5rem; margin: 0; text-shadow: 4px 4px 15px rgba(0,0,0,0.6);">ПОЛТАВА</h1>
+    <p style="font-size: 1.6rem;" lang="uk">Місто, де історія стає майбутнім</p>
+    <p style="font-size: 1.6rem;" lang="en">The city where history meets the future</p>
 </header>
 
 <div class="main-container">
     <main>
         <div class="card">
-            <h2 lang="uk">📜 Історія вільного міста</h2>
-            <h2 lang="en">📜 History of the Free City</h2>
-            
-            <div lang="uk">
-                <p>Полтава — це місто, де кожен камінь має голос. Офіційною датою заснування вважається 899 рік, хоча люди жили тут ще за часів скіфів. Полтава завжди була "ключем" до України. Саме тут у 1709 році відбулася битва, що змінила карту Європи.</p>
-                <p>Але справжнє серце міста — це культура. Саме тут Іван Котляревський написав "Енеїду", започаткувавши сучасну українську мову. Наше місто пережило війни та руйнування, але зберегло свій унікальний ансамбль Круглої площі — єдиний у світі зразок класицизму, що зберігся у повному складі.</p>
-            </div>
-            
-            <div lang="en">
-                <p>Poltava is a city where every stone has a voice. The official founding date is 899, although people lived here since the Scythian era. Poltava has always been the "key" to Ukraine. It was here in 1709 that the battle that changed the map of Europe took place.</p>
-                <p>But the true heart of the city is culture. It was here that Ivan Kotlyarevsky wrote "Aeneid", starting the modern Ukrainian language. Our city survived wars and destruction but preserved its unique Round Square ensemble — the only example of classicism in the world preserved in its entirety.</p>
-            </div>
+            <h2 lang="uk">📜 Наша Історія</h2>
+            <h2 lang="en">📜 Our History</h2>
+            <p lang="uk">Полтава — серце України. Від легендарної битви 1709 року до статусу духовної столиці, наше місто завжди було в центрі подій. Тут народилася сучасна українська мова завдяки Котляревському, і тут кожен провулок дихає затишком та історією.</p>
+            <p lang="en">Poltava is the heart of Ukraine. From the legendary battle of 1709 to its status as a spiritual capital, our city has always been at the center of events. This is where the modern Ukrainian language was born.</p>
         </div>
 
         <div class="card">
-            <h2 lang="uk">🚀 Де зависає молодь?</h2>
-            <h2 lang="en">🚀 Youth Hangouts</h2>
-            
+            <h2 lang="uk">🚀 Топ місця</h2>
+            <h2 lang="en">🚀 Top Spots</h2>
             <div class="spot">
-                <strong lang="uk">Біла Альтанка та Іванова Гора</strong>
-                <strong lang="en">White Rotunda & Ivanova Hill</strong>
-                <p lang="uk">Точка №1 для зустрічі заходів сонця, кави з друзями та вуличних музикантів. Найкращий вид на Ворсклу та Поділ.</p>
-                <p lang="en">Point #1 for watching sunsets, coffee with friends, and street musicians. The best view of the Vorskla river.</p>
+                <strong lang="uk">Іванова Гора</strong>
+                <strong lang="en">Ivanova Hill</strong>
+                <p lang="uk">Найкращий оглядовий майданчик міста та символ Полтави.</p>
+                <p lang="en">The best observation deck in the city and a symbol of Poltava.</p>
             </div>
-
             <div class="spot">
-                <strong lang="uk">"Стометрівка" (Вул. Соборності)</strong>
-                <strong lang="en">The "Hundred Meters" (Sobornosti Str)</strong>
-                <p lang="uk">Пішохідна зона з нескінченними кав'ярнями. Місце, де ти обов'язково зустрінеш когось зі знайомих.</p>
-                <p lang="en">Pedestrian zone with endless coffee shops. The place where you are guaranteed to meet someone you know.</p>
-            </div>
-
-            <div class="spot">
-                <strong lang="uk">Корпусний парк</strong>
+                <strong lang="uk">Корпусний Сад</strong>
                 <strong lang="en">Corpus Garden</strong>
-                <p lang="uk">Центр кільцевої розв'язки. Тут можна посидіти на траві, покататися на скейті або просто "почілити" між парами чи роботою.</p>
-                <p lang="en">The center of the roundabout. Here you can sit on the grass, skate, or just chill between classes or work.</p>
+                <p lang="uk">Зелене серце міста, де завжди вирує життя.</p>
+                <p lang="en">The green heart of the city, always full of life.</p>
             </div>
         </div>
     </main>
@@ -104,21 +116,13 @@
         </div>
 
         <div class="card">
-            <h2 lang="uk">📍 Карта двіжу</h2>
-            <h2 lang="en">📍 Hotspots Map</h2>
-            <iframe width="100%" height="300" src="https://www.openstreetmap.org/export/embed.html?bbox=34.54,49.58,34.57,49.60&layer=mapnik&marker=49.589,34.555"></iframe>
-            <p style="font-size: 0.8rem; color: #777; margin-top: 10px;" lang="uk">На карті: Центр міста та основні пішохідні зони.</p>
-            <p style="font-size: 0.8rem; color: #777; margin-top: 10px;" lang="en">On the map: City center and main pedestrian zones.</p>
+            <h2 lang="uk" style="font-size: 1.3rem;">📍 Карта</h2>
+            <iframe width="100%" height="250" style="border-radius: 12px; border: none;" src="https://www.openstreetmap.org/export/embed.html?bbox=34.542%2C49.584%2C34.565%2C49.595&layer=mapnik&marker=49.589,34.555"></iframe>
         </div>
 
-        <div class="vibe-box">
-            <h3 lang="uk">✨ Полтавський вайб</h3>
-            <h3 lang="en">✨ Poltava Vibe</h3>
-            <p lang="uk">Полтава — це не про швидкість, це про смак життя. Це коли ти купуєш каву біля театру Гоголя і йдеш пішки до самої Альтанки, бо поспішати немає сенсу.</p>
-            <p lang="en">Poltava is not about speed, it's about the taste of life. It's when you buy coffee near the Gogol Theater and walk to the Rotunda because there's no point in rushing.</p>
-            
-            <a href="https://share.google/9PrdsQoZfMHMaawZD" target="_blank" class="tv-btn">ДИВИТИСЬ МІСТО+ LIVE</a>
-        </div>
+        <a href="https://share.google/9PrdsQoZfMHMaawZD" target="_blank" class="tv-card">
+            <h3 style="margin:0">МІСТО+ LIVE</h3>
+        </a>
     </aside>
 </div>
 
